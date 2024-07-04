@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="formulaire" nsURI="http://www.example.org/formulaire" nsPrefix="formulaire">
+  <eClassifiers xsi:type="ecore:EClass" name="Fomulaire">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contexte" eType="#//Contexte"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="champ" lowerBound="1" upperBound="-1"
+        eType="#//Champ" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="button" lowerBound="1"
+        upperBound="-1" eType="#//Button" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Type" instanceTypeName="">
+    <eLiterals name="varChar"/>
+    <eLiterals name="bool" value="1"/>
+    <eLiterals name="date" value="2" literal="date"/>
+    <eLiterals name="date_time" value="3"/>
+    <eLiterals name="time" value="4" literal="time"/>
+    <eLiterals name="int" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Contexte">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" ordered="false"
+        unique="false" eType="#//Type" changeable="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Champ">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="label" lowerBound="1" eType="#//Label"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obligatoire" eType="#//Type"
+        defaultValueLiteral="bool"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Label">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="#//Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Button">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="#//Type" defaultValueLiteral="varChar"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Select" eSuperTypes="#//Champ">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="option" lowerBound="1"
+        upperBound="-1" eType="#//Option"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//Champ">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="placeholder" eType="#//Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Option">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//Type"/>
+  </eClassifiers>
+</ecore:EPackage>
